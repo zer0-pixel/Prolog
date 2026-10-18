@@ -1,7 +1,4 @@
 % Author: Thomas Johnson
-% Due Date: Thu, Oct 15
-% Class: 342 Sec01
-
 
 % Fortran Family
 parent(fortran, algol60).
@@ -129,7 +126,9 @@ cousin(X, Y) :- parent(P1, X), parent(P2, Y), sibling(P1, P2).
 older(X, Y) :- born(X, Xborn), born(Y, Yborn), Xborn < Yborn.
 olderThan2000(Language) :- born(Language, Year), Year < 2000.
 
-
+%----------------------------------------------------------------
+% This part of the code stopped working
+/*
 :- use_module(library(lists)).
 right_of(A, B, Tree):- append(_, [B, A|_], Tree).
 
@@ -138,29 +137,26 @@ beside(A, B, Tree):- right_of(A, B, Tree).
 beside(B, A, Tree):- right_of(B, A, Tree).
 
 
-lang(fortran, algol60):-
+lang(fortran, algol60) :-
 solution([
          % Fortran Family
-           c('Fortran', '-', 'Algol60', '-', '_', 1957),
-           c('Algol60', 'Fortran', '', 'Fortran77', '_', 1960),
+           c(fortran, '-', algol60, '-', '_', 1957),
+           c(algol60, fortran, '', fortran77, '_', 1960),
            % Algol Branch
-           c('Smalltalk', 'Algol60', 'Smalltalk80', '-', '-', 1968),
-           c('C(K&R)', 'Algol60', 'C++, Python', 'Smalltalk', '-', 1978),
-           c('C++', 'Algol60', 'Python', 'C', '', 1984),
-           c('Fortran77', 'Fortran', '', 'Algol60', '_', 1976)
+           c(smalltalk, algol60, smalltalk80, '-', '-', 1968),
+           c(c, algol60, cpp, smalltalk, '-', 1978),
+           c(cpp, algol60, python, c, '', 1984),
+           c(fortran77, fortran, '', algol60, '_', 1976)
 ]).
-
 
 lang(fortran, algol60) :-
 solution(Tree),
 member(c(fortran, _, _, _, _, 1957), Tree),
 member(c(algol60, _, _, _, _, 1960), Tree).
-%member(c(Prolog, _, _, _, 1970), Tree),
-%member(c(Fortran77, _, _, _, 1976), Tree).
 
 % To run program
 % ?- run
-run :-
+run :- 
 solution(Tree),
 format("~w~t~12|~w~t~24|~w~t~36|~w~t~50|~w~t~62|~w~n",
 ['Language','Parent','Child', 'Sibling', 'Cousin', 'Year']),
@@ -170,3 +166,4 @@ nl,
 lang(fortran, algol60),
 format("~w is a Parent with children.~n",[fortran]),
 format("~w is a Child of Fortrant.~n",[algol60]).
+*/
